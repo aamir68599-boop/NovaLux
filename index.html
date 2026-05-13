@@ -66,7 +66,7 @@ nav a:hover{
     color:#00e5ff;
 }
 
-/* HERO */
+/* HERO FULL SLIDER */
 
 .hero{
     position:relative;
@@ -211,6 +211,7 @@ nav a:hover{
     font-size:24px;
     margin-bottom:10px;
     line-height:1.4;
+    word-break:break-word;
 }
 
 .product-info p{
@@ -218,6 +219,7 @@ nav a:hover{
     line-height:1.8;
     margin-bottom:20px;
     font-size:15px;
+    word-break:break-word;
 }
 
 .price{
@@ -264,10 +266,11 @@ nav a:hover{
 .buy-btn{
     background:linear-gradient(90deg,#00e5ff,#7b61ff);
     color:white;
+    box-shadow:0 10px 25px rgba(0,229,255,0.2);
 }
 
 .buy-btn:hover{
-    transform:translateY(-4px);
+    transform:translateY(-4px) scale(1.03);
 }
 
 /* CHECKOUT */
@@ -328,6 +331,7 @@ nav a:hover{
     color:white;
     font-size:15px;
 
+    /* FIX */
     appearance:none;
     -webkit-appearance:none;
     -moz-appearance:none;
@@ -357,6 +361,7 @@ nav a:hover{
     font-weight:600;
     background:linear-gradient(90deg,#00e5ff,#7b61ff);
     color:white;
+    margin-top:10px;
 }
 
 .close-btn{
@@ -371,6 +376,60 @@ nav a:hover{
     font-size:15px;
 }
 
+/* FEATURES */
+
+.features{
+    padding:20px 8% 90px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:25px;
+}
+
+.feature-box{
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.08);
+    padding:35px 25px;
+    border-radius:22px;
+}
+
+.feature-box h3{
+    margin-bottom:15px;
+    font-size:22px;
+}
+
+.feature-box p{
+    color:#c7c7c7;
+    line-height:1.7;
+}
+
+/* ABOUT */
+
+.about{
+    padding:90px 8%;
+    text-align:center;
+}
+
+.about h2{
+    font-size:48px;
+    margin-bottom:20px;
+}
+
+.about p{
+    color:#c5c5c5;
+    max-width:800px;
+    margin:auto;
+    line-height:1.9;
+}
+
+/* FOOTER */
+
+footer{
+    padding:30px;
+    text-align:center;
+    border-top:1px solid rgba(255,255,255,0.08);
+    color:#bdbdbd;
+}
+
 /* MOBILE */
 
 @media(max-width:768px){
@@ -379,8 +438,10 @@ nav{
     display:none;
 }
 
-.hero{
-    height:80vh;
+.section-title h2,
+.about h2,
+.checkout-container h2{
+    font-size:32px;
 }
 
 .button-group{
@@ -390,6 +451,23 @@ nav{
 .cart-btn,
 .buy-btn{
     width:100%;
+}
+
+.hero{
+    height:80vh;
+}
+
+.product-info h3{
+    font-size:21px;
+}
+
+.product-info p{
+    font-size:14px;
+    line-height:1.7;
+}
+
+.checkout-container{
+    padding:25px;
 }
 
 }
@@ -406,9 +484,13 @@ nav{
     <nav>
         <a href="#home">Home</a>
         <a href="#products">Products</a>
+        <a href="#features">Features</a>
+        <a href="#about">About</a>
     </nav>
 
 </header>
+
+<!-- HERO -->
 
 <section class="hero" id="home">
 
@@ -443,6 +525,8 @@ nav{
 
 </section>
 
+<!-- PRODUCTS -->
+
 <section class="products" id="products">
 
     <div class="section-title">
@@ -450,12 +534,14 @@ nav{
         <h2>Trending Products</h2>
 
         <p>
-            Discover our premium handpicked products with modern aesthetics.
+            Discover our premium handpicked products with modern aesthetics and high quality performance.
         </p>
 
     </div>
 
     <div class="product-grid">
+
+        <!-- PRODUCT 1 -->
 
         <div class="product-card">
 
@@ -463,10 +549,12 @@ nav{
 
             <div class="product-info">
 
-                <h3>Rustic Hen Egg Storage Cabinet</h3>
+                <h3>
+                    Rustic Hen Egg Storage Cabinet
+                </h3>
 
                 <p>
-                    Handcrafted wooden hen-shaped egg storage cabinet.
+                    Handcrafted wooden hen-shaped egg storage cabinet with detailed carving and 3 pull-out drawers.
                 </p>
 
                 <div class="price">$150</div>
@@ -493,11 +581,131 @@ nav{
 
         </div>
 
+        <!-- PRODUCT 2 -->
+
+        <div class="product-card">
+
+            <img src="https://aamir68599-boop.github.io/NovaLux/d2.jpeg">
+
+            <div class="product-info">
+
+                <h3>
+                    Gothic Anatomical Heart Crochet Handbag
+                </h3>
+
+                <p>
+                    A bold luxury fashion handbag designed in the shape of an anatomical heart.
+                </p>
+
+                <div class="price">$300</div>
+
+                <div class="button-group">
+
+                    <button class="cart-btn"
+                    onclick="openCheckout('Gothic Anatomical Heart Crochet Handbag','$300','Add To Cart')">
+
+                    🛒 Add To Cart
+
+                    </button>
+
+                    <button class="buy-btn"
+                    onclick="openCheckout('Gothic Anatomical Heart Crochet Handbag','$300','Buy Now')">
+
+                    ⚡ Buy Now
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- PRODUCT 3 -->
+
+        <div class="product-card">
+
+            <img src="https://aamir68599-boop.github.io/NovaLux/d3.jpeg">
+
+            <div class="product-info">
+
+                <h3>
+                    Vintage Scroll Tea Ceremony Set
+                </h3>
+
+                <p>
+                    Elegant antique-inspired ceramic tea set with vintage manuscript typography.
+                </p>
+
+                <div class="price">$180</div>
+
+                <div class="button-group">
+
+                    <button class="cart-btn"
+                    onclick="openCheckout('Vintage Scroll Tea Ceremony Set','$180','Add To Cart')">
+
+                    🛒 Add To Cart
+
+                    </button>
+
+                    <button class="buy-btn"
+                    onclick="openCheckout('Vintage Scroll Tea Ceremony Set','$180','Buy Now')">
+
+                    ⚡ Buy Now
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- PRODUCT 4 -->
+
+        <div class="product-card">
+
+            <img src="https://aamir68599-boop.github.io/NovaLux/d4.jpeg">
+
+            <div class="product-info">
+
+                <h3>
+                    Scarlet Muse Luxury Scent
+                </h3>
+
+                <p>
+                    Luxury red couture-style perfume bottle with premium glossy finish.
+                </p>
+
+                <div class="price">$150</div>
+
+                <div class="button-group">
+
+                    <button class="cart-btn"
+                    onclick="openCheckout('Scarlet Muse Luxury Scent','$150','Add To Cart')">
+
+                    🛒 Add To Cart
+
+                    </button>
+
+                    <button class="buy-btn"
+                    onclick="openCheckout('Scarlet Muse Luxury Scent','$150','Buy Now')">
+
+                    ⚡ Buy Now
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
     </div>
 
 </section>
 
-<!-- CHECKOUT -->
+<!-- CHECKOUT PAGE -->
 
 <div class="checkout-page" id="checkoutPage">
 
@@ -541,11 +749,55 @@ nav{
 
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<!-- FEATURES -->
+
+<section class="features" id="features">
+
+    <div class="feature-box">
+        <h3>⚡ Fast Delivery</h3>
+        <p>Get ultra fast shipping and doorstep delivery across India.</p>
+    </div>
+
+    <div class="feature-box">
+        <h3>🔒 Secure Payments</h3>
+        <p>100% safe and secure online payment gateways supported.</p>
+    </div>
+
+    <div class="feature-box">
+        <h3>💎 Premium Quality</h3>
+        <p>Only high-end quality products selected for our customers.</p>
+    </div>
+
+    <div class="feature-box">
+        <h3>🎧 24/7 Support</h3>
+        <p>Friendly customer support team available anytime for help.</p>
+    </div>
+
+</section>
+
+<!-- ABOUT -->
+
+<section class="about" id="about">
+
+    <h2>About NovaLux</h2>
+
+    <p>
+        NovaLux is a modern ecommerce experience crafted with premium aesthetics, futuristic design and smooth user experience.
+    </p>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+    <p>
+        © 2026 NovaLux Store — All Rights Reserved
+    </p>
+
+</footer>
 
 <script>
-
-emailjs.init("YOUR_PUBLIC_KEY");
 
 /* CHECKOUT */
 
@@ -593,44 +845,33 @@ function placeOrder(event){
     let payment = document.getElementById('paymentMethod').value;
     let note = document.getElementById('customerNote').value;
 
-    let templateParams = {
+    let phoneNumber = '919999999999';
 
-        product: selectedProduct,
-        price: selectedPrice,
-        action: selectedAction,
+    let message =
+`🛍️ New Order - NovaLux
 
-        customer_name: name,
-        customer_email: email,
-        customer_phone: phone,
-        customer_address: address,
-        payment_method: payment,
-        customer_note: note
+Product: ${selectedProduct}
 
-    };
+Price: ${selectedPrice}
 
-    emailjs.send(
-        "YOUR_SERVICE_ID",
-        "YOUR_TEMPLATE_ID",
-        templateParams
-    )
+Action: ${selectedAction}
 
-    .then(function(){
+Customer Name: ${name}
 
-        alert("Order Placed Successfully");
+Email: ${email}
 
-        document.querySelector('.checkout-form').reset();
+Phone: ${phone}
 
-        closeCheckout();
+Address: ${address}
 
-    })
+Payment Method: ${payment}
 
-    .catch(function(error){
+Additional Note: ${note}`;
 
-        alert("Something Went Wrong");
+    let whatsappURL =
+`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
-        console.log(error);
-
-    });
+    window.open(whatsappURL,'_blank');
 
 }
 
