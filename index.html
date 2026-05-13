@@ -330,6 +330,8 @@ nav a:hover{
     background:rgba(255,255,255,0.08);
     color:white;
     font-size:15px;
+
+    /* FIX */
     appearance:none;
     -webkit-appearance:none;
     -moz-appearance:none;
@@ -488,6 +490,8 @@ nav{
 
 </header>
 
+<!-- HERO -->
+
 <section class="hero" id="home">
 
     <div class="hero-slider">
@@ -521,6 +525,8 @@ nav{
 
 </section>
 
+<!-- PRODUCTS -->
+
 <section class="products" id="products">
 
     <div class="section-title">
@@ -535,13 +541,17 @@ nav{
 
     <div class="product-grid">
 
+        <!-- PRODUCT 1 -->
+
         <div class="product-card">
 
             <img src="https://aamir68599-boop.github.io/NovaLux/d1.jpeg">
 
             <div class="product-info">
 
-                <h3>Rustic Hen Egg Storage Cabinet</h3>
+                <h3>
+                    Rustic Hen Egg Storage Cabinet
+                </h3>
 
                 <p>
                     Handcrafted wooden hen-shaped egg storage cabinet with detailed carving and 3 pull-out drawers.
@@ -553,12 +563,136 @@ nav{
 
                     <button class="cart-btn"
                     onclick="openCheckout('Rustic Hen Egg Storage Cabinet','$150','Add To Cart')">
+
                     🛒 Add To Cart
+
                     </button>
 
                     <button class="buy-btn"
                     onclick="openCheckout('Rustic Hen Egg Storage Cabinet','$150','Buy Now')">
+
                     ⚡ Buy Now
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- PRODUCT 2 -->
+
+        <div class="product-card">
+
+            <img src="https://aamir68599-boop.github.io/NovaLux/d2.jpeg">
+
+            <div class="product-info">
+
+                <h3>
+                    Gothic Anatomical Heart Crochet Handbag
+                </h3>
+
+                <p>
+                    A bold luxury fashion handbag designed in the shape of an anatomical heart.
+                </p>
+
+                <div class="price">$300</div>
+
+                <div class="button-group">
+
+                    <button class="cart-btn"
+                    onclick="openCheckout('Gothic Anatomical Heart Crochet Handbag','$300','Add To Cart')">
+
+                    🛒 Add To Cart
+
+                    </button>
+
+                    <button class="buy-btn"
+                    onclick="openCheckout('Gothic Anatomical Heart Crochet Handbag','$300','Buy Now')">
+
+                    ⚡ Buy Now
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- PRODUCT 3 -->
+
+        <div class="product-card">
+
+            <img src="https://aamir68599-boop.github.io/NovaLux/d3.jpeg">
+
+            <div class="product-info">
+
+                <h3>
+                    Vintage Scroll Tea Ceremony Set
+                </h3>
+
+                <p>
+                    Elegant antique-inspired ceramic tea set with vintage manuscript typography.
+                </p>
+
+                <div class="price">$180</div>
+
+                <div class="button-group">
+
+                    <button class="cart-btn"
+                    onclick="openCheckout('Vintage Scroll Tea Ceremony Set','$180','Add To Cart')">
+
+                    🛒 Add To Cart
+
+                    </button>
+
+                    <button class="buy-btn"
+                    onclick="openCheckout('Vintage Scroll Tea Ceremony Set','$180','Buy Now')">
+
+                    ⚡ Buy Now
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- PRODUCT 4 -->
+
+        <div class="product-card">
+
+            <img src="https://aamir68599-boop.github.io/NovaLux/d4.jpeg">
+
+            <div class="product-info">
+
+                <h3>
+                    Scarlet Muse Luxury Scent
+                </h3>
+
+                <p>
+                    Luxury red couture-style perfume bottle with premium glossy finish.
+                </p>
+
+                <div class="price">$150</div>
+
+                <div class="button-group">
+
+                    <button class="cart-btn"
+                    onclick="openCheckout('Scarlet Muse Luxury Scent','$150','Add To Cart')">
+
+                    🛒 Add To Cart
+
+                    </button>
+
+                    <button class="buy-btn"
+                    onclick="openCheckout('Scarlet Muse Luxury Scent','$150','Buy Now')">
+
+                    ⚡ Buy Now
+
                     </button>
 
                 </div>
@@ -570,6 +704,8 @@ nav{
     </div>
 
 </section>
+
+<!-- CHECKOUT PAGE -->
 
 <div class="checkout-page" id="checkoutPage">
 
@@ -613,6 +749,8 @@ nav{
 
 </div>
 
+<!-- FEATURES -->
+
 <section class="features" id="features">
 
     <div class="feature-box">
@@ -637,6 +775,8 @@ nav{
 
 </section>
 
+<!-- ABOUT -->
+
 <section class="about" id="about">
 
     <h2>About NovaLux</h2>
@@ -646,6 +786,8 @@ nav{
     </p>
 
 </section>
+
+<!-- FOOTER -->
 
 <footer>
 
@@ -692,7 +834,7 @@ function closeCheckout(){
 
 /* PLACE ORDER */
 
-async function placeOrder(event){
+function placeOrder(event){
 
     event.preventDefault();
 
@@ -703,55 +845,33 @@ async function placeOrder(event){
     let payment = document.getElementById('paymentMethod').value;
     let note = document.getElementById('customerNote').value;
 
-    const orderData = {
+    let phoneNumber = '+918979401469';
 
-        product: selectedProduct,
-        price: selectedPrice,
-        action: selectedAction,
+    let message =
+`🛍️ New Order - NovaLux
 
-        name: name,
-        email: email,
-        phone: phone,
-        address: address,
-        payment: payment,
-        note: note
+Product: ${selectedProduct}
 
-    };
+Price: ${selectedPrice}
 
-    try{
+Action: ${selectedAction}
 
-        const response = await fetch(
-        "https://script.google.com/macros/s/AKfycbx70snlApKnJ3kRHyZ82589fEv8j1pGnFEwSD5tkp0/exec",
-        {
-            method:"POST",
+Customer Name: ${name}
 
-            headers:{
-                "Content-Type":"application/json"
-            },
+Email: ${email}
 
-            body:JSON.stringify(orderData)
+Phone: ${phone}
 
-        });
+Address: ${address}
 
-        const result = await response.json();
+Payment Method: ${payment}
 
-        if(result.result === "success"){
+Additional Note: ${note}`;
 
-            alert("Order Placed Successfully!");
+    let whatsappURL =
+`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
-            document.querySelector(".checkout-form").reset();
-
-            closeCheckout();
-
-        }
-
-    }catch(error){
-
-        alert("Something went wrong!");
-
-        console.log(error);
-
-    }
+    window.open(whatsappURL,'_blank');
 
 }
 
