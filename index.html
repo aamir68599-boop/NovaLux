@@ -66,7 +66,7 @@ nav a:hover{
     color:#00e5ff;
 }
 
-/* HERO FULL SLIDER */
+/* HERO */
 
 .hero{
     position:relative;
@@ -330,8 +330,6 @@ nav a:hover{
     background:rgba(255,255,255,0.08);
     color:white;
     font-size:15px;
-
-    /* FIX */
     appearance:none;
     -webkit-appearance:none;
     -moz-appearance:none;
@@ -490,8 +488,6 @@ nav{
 
 </header>
 
-<!-- HERO -->
-
 <section class="hero" id="home">
 
     <div class="hero-slider">
@@ -525,8 +521,6 @@ nav{
 
 </section>
 
-<!-- PRODUCTS -->
-
 <section class="products" id="products">
 
     <div class="section-title">
@@ -541,17 +535,13 @@ nav{
 
     <div class="product-grid">
 
-        <!-- PRODUCT 1 -->
-
         <div class="product-card">
 
             <img src="https://aamir68599-boop.github.io/NovaLux/d1.jpeg">
 
             <div class="product-info">
 
-                <h3>
-                    Rustic Hen Egg Storage Cabinet
-                </h3>
+                <h3>Rustic Hen Egg Storage Cabinet</h3>
 
                 <p>
                     Handcrafted wooden hen-shaped egg storage cabinet with detailed carving and 3 pull-out drawers.
@@ -581,131 +571,9 @@ nav{
 
         </div>
 
-        <!-- PRODUCT 2 -->
-
-        <div class="product-card">
-
-            <img src="https://aamir68599-boop.github.io/NovaLux/d2.jpeg">
-
-            <div class="product-info">
-
-                <h3>
-                    Gothic Anatomical Heart Crochet Handbag
-                </h3>
-
-                <p>
-                    A bold luxury fashion handbag designed in the shape of an anatomical heart.
-                </p>
-
-                <div class="price">$300</div>
-
-                <div class="button-group">
-
-                    <button class="cart-btn"
-                    onclick="openCheckout('Gothic Anatomical Heart Crochet Handbag','$300','Add To Cart')">
-
-                    🛒 Add To Cart
-
-                    </button>
-
-                    <button class="buy-btn"
-                    onclick="openCheckout('Gothic Anatomical Heart Crochet Handbag','$300','Buy Now')">
-
-                    ⚡ Buy Now
-
-                    </button>
-
-                </div>
-
-            </div>
-
-        </div>
-
-        <!-- PRODUCT 3 -->
-
-        <div class="product-card">
-
-            <img src="https://aamir68599-boop.github.io/NovaLux/d3.jpeg">
-
-            <div class="product-info">
-
-                <h3>
-                    Vintage Scroll Tea Ceremony Set
-                </h3>
-
-                <p>
-                    Elegant antique-inspired ceramic tea set with vintage manuscript typography.
-                </p>
-
-                <div class="price">$180</div>
-
-                <div class="button-group">
-
-                    <button class="cart-btn"
-                    onclick="openCheckout('Vintage Scroll Tea Ceremony Set','$180','Add To Cart')">
-
-                    🛒 Add To Cart
-
-                    </button>
-
-                    <button class="buy-btn"
-                    onclick="openCheckout('Vintage Scroll Tea Ceremony Set','$180','Buy Now')">
-
-                    ⚡ Buy Now
-
-                    </button>
-
-                </div>
-
-            </div>
-
-        </div>
-
-        <!-- PRODUCT 4 -->
-
-        <div class="product-card">
-
-            <img src="https://aamir68599-boop.github.io/NovaLux/d4.jpeg">
-
-            <div class="product-info">
-
-                <h3>
-                    Scarlet Muse Luxury Scent
-                </h3>
-
-                <p>
-                    Luxury red couture-style perfume bottle with premium glossy finish.
-                </p>
-
-                <div class="price">$150</div>
-
-                <div class="button-group">
-
-                    <button class="cart-btn"
-                    onclick="openCheckout('Scarlet Muse Luxury Scent','$150','Add To Cart')">
-
-                    🛒 Add To Cart
-
-                    </button>
-
-                    <button class="buy-btn"
-                    onclick="openCheckout('Scarlet Muse Luxury Scent','$150','Buy Now')">
-
-                    ⚡ Buy Now
-
-                    </button>
-
-                </div>
-
-            </div>
-
-        </div>
-
     </div>
 
 </section>
-
-<!-- CHECKOUT PAGE -->
 
 <div class="checkout-page" id="checkoutPage">
 
@@ -749,8 +617,6 @@ nav{
 
 </div>
 
-<!-- FEATURES -->
-
 <section class="features" id="features">
 
     <div class="feature-box">
@@ -775,19 +641,15 @@ nav{
 
 </section>
 
-<!-- ABOUT -->
-
 <section class="about" id="about">
 
     <h2>About NovaLux</h2>
 
     <p>
-        NovaLux is a modern ecommerce experience crafted with premium aesthetics, futuristic design and smooth user experience.
+        NovaLux is a modern ecommerce experience crafted with premium aesthetics and smooth user experience.
     </p>
 
 </section>
-
-<!-- FOOTER -->
 
 <footer>
 
@@ -822,6 +684,18 @@ function openCheckout(product,price,action){
 
     document.body.style.overflow = 'hidden';
 
+}
+
+function closeCheckout(){
+
+    document.getElementById('checkoutPage').classList.remove('active');
+
+    document.body.style.overflow = 'auto';
+
+}
+
+/* PLACE ORDER */
+
 async function placeOrder(event){
 
     event.preventDefault();
@@ -851,13 +725,16 @@ async function placeOrder(event){
     try{
 
         const response = await fetch(
-        "https://script.google.com/macros/s/AKfycbx70snlApKnJ3kRHyZ82589fEv8j1pGnFEwSD5tkp0/dev",
+        "https://script.google.com/macros/s/AKfycbx70snlApKnJ3kRHyZ82589fEv8j1pGnFEwSD5tkp0/exec",
         {
             method:"POST",
+
             headers:{
                 "Content-Type":"application/json"
             },
+
             body:JSON.stringify(orderData)
+
         });
 
         const result = await response.json();
@@ -882,7 +759,27 @@ async function placeOrder(event){
 
 }
 
+/* HERO SLIDER */
 
+const slides = document.querySelectorAll('.hero-slide');
+const dots = document.querySelectorAll('.dot');
+
+let currentSlide = 0;
+
+function showSlide(index){
+
+    slides.forEach((slide)=>{
+        slide.classList.remove('active');
+    });
+
+    dots.forEach((dot)=>{
+        dot.classList.remove('active');
+    });
+
+    slides[index].classList.add('active');
+    dots[index].classList.add('active');
+
+}
 
 function nextSlide(){
 
