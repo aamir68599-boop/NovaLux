@@ -330,6 +330,16 @@ nav a:hover{
     background:rgba(255,255,255,0.08);
     color:white;
     font-size:15px;
+
+    /* FIX */
+    appearance:none;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+}
+
+.checkout-form select option{
+    background:#1b2233;
+    color:white;
 }
 
 .checkout-form textarea{
@@ -544,7 +554,7 @@ nav{
                 </h3>
 
                 <p>
-                    Handcrafted wooden hen-shaped egg storage cabinet with detailed carving and 3 pull-out drawers. Stylish farmhouse kitchen décor piece that stores eggs safely while adding a premium rustic aesthetic to the kitchen counter.
+                    Handcrafted wooden hen-shaped egg storage cabinet with detailed carving and 3 pull-out drawers.
                 </p>
 
                 <div class="price">$150</div>
@@ -584,7 +594,7 @@ nav{
                 </h3>
 
                 <p>
-                    A bold luxury fashion handbag designed in the shape of an anatomical heart with crochet texture, black floral detailing, and gold chain straps. Perfect for gothic fashion lovers, collectors, and statement styling.
+                    A bold luxury fashion handbag designed in the shape of an anatomical heart.
                 </p>
 
                 <div class="price">$300</div>
@@ -624,7 +634,7 @@ nav{
                 </h3>
 
                 <p>
-                    Elegant antique-inspired ceramic tea set featuring scroll-shaped handles and vintage manuscript typography. Designed for luxury tea serving, aesthetic cafés, and collectible home décor.
+                    Elegant antique-inspired ceramic tea set with vintage manuscript typography.
                 </p>
 
                 <div class="price">$180</div>
@@ -664,7 +674,7 @@ nav{
                 </h3>
 
                 <p>
-                    Luxury red couture-style perfume bottle with floral waist detailing and glossy premium finish, inspired by high-fashion elegance and romantic femininity.
+                    Luxury red couture-style perfume bottle with premium glossy finish.
                 </p>
 
                 <div class="price">$150</div>
@@ -719,8 +729,8 @@ nav{
 
             <select id="paymentMethod" required>
                 <option value="">Select Payment Method</option>
-                <option>Cash On Delivery</option>
-                <option>Debit / Credit Card</option>
+                <option value="Cash On Delivery">Cash On Delivery</option>
+                <option value="Debit / Credit Card">Debit / Credit Card</option>
             </select>
 
             <textarea id="customerNote" placeholder="Additional Notes"></textarea>
