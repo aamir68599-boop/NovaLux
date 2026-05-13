@@ -822,19 +822,7 @@ function openCheckout(product,price,action){
 
     document.body.style.overflow = 'hidden';
 
-}
-
-function closeCheckout(){
-
-    document.getElementById('checkoutPage').classList.remove('active');
-
-    document.body.style.overflow = 'auto';
-
-}
-
-/* PLACE ORDER */
-
-function placeOrder(event){
+async function placeOrder(event){
 
     event.preventDefault();
 
@@ -845,57 +833,56 @@ function placeOrder(event){
     let payment = document.getElementById('paymentMethod').value;
     let note = document.getElementById('customerNote').value;
 
-    let phoneNumber = '+918979401469';
+    const orderData = {
 
-    let message =
-`🛍️ New Order - NovaLux
+        product: selectedProduct,
+        price: selectedPrice,
+        action: selectedAction,
 
-Product: ${selectedProduct}
+        name: name,
+        email: email,
+        phone: phone,
+        address: address,
+        payment: payment,
+        note: note
 
-Price: ${selectedPrice}
+    };
 
-Action: ${selectedAction}
+    try{
 
-Customer Name: ${name}
+        const response = await fetch(
+        "https://script.google.com/macros/s/AKfycbx70snlApKnJ3kRHyZ82589fEv8j1pGnFEwSD5tkp0/dev",
+        {
+            method:"POST",
+            headers:{
+                "Content-Type":"application/json"
+            },
+            body:JSON.stringify(orderData)
+        });
 
-Email: ${email}
+        const result = await response.json();
 
-Phone: ${phone}
+        if(result.result === "success"){
 
-Address: ${address}
+            alert("Order Placed Successfully!");
 
-Payment Method: ${payment}
+            document.querySelector(".checkout-form").reset();
 
-Additional Note: ${note}`;
+            closeCheckout();
 
-    let whatsappURL =
-`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+        }
 
-    window.open(whatsappURL,'_blank');
+    }catch(error){
 
-}
+        alert("Something went wrong!");
 
-/* HERO SLIDER */
+        console.log(error);
 
-const slides = document.querySelectorAll('.hero-slide');
-const dots = document.querySelectorAll('.dot');
-
-let currentSlide = 0;
-
-function showSlide(index){
-
-    slides.forEach((slide)=>{
-        slide.classList.remove('active');
-    });
-
-    dots.forEach((dot)=>{
-        dot.classList.remove('active');
-    });
-
-    slides[index].classList.add('active');
-    dots[index].classList.add('active');
+    }
 
 }
+
+
 
 function nextSlide(){
 
