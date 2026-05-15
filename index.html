@@ -105,7 +105,7 @@ nav a:hover{
     animation:zoom 6s linear infinite;
 }
 
-/* ONLY 3RD IMAGE FIX */
+/* ONLY 3RD SLIDER IMAGE FIX */
 
 .hero-slide:nth-child(3) img{
     object-fit:contain;
@@ -218,6 +218,14 @@ nav a:hover{
     width:100%;
     height:270px;
     object-fit:cover;
+}
+
+/* PRODUCT 3 FULL IMAGE FIX */
+
+.product-grid .product-card:nth-child(3) img{
+    object-fit:contain;
+    background:#111;
+    padding:10px;
 }
 
 .product-info{
@@ -337,8 +345,7 @@ nav a:hover{
 }
 
 .checkout-form input,
-.checkout-form textarea,
-.checkout-form select{
+.checkout-form textarea{
     width:100%;
     padding:16px;
     border:none;
@@ -416,8 +423,6 @@ nav{
     background:#000;
 }
 
-/* 3RD IMAGE MOBILE FIX */
-
 .hero-slide:nth-child(3) img{
     object-fit:contain;
     object-position:center center;
@@ -426,8 +431,6 @@ nav{
     padding-top:80px;
     transform:scale(0.82);
 }
-
-/* END */
 
 .product-info h3{
     font-size:21px;
@@ -729,8 +732,11 @@ function placeOrder(event){
     event.preventDefault();
 
     let name = document.getElementById('customerName').value;
+
     let phone = document.getElementById('customerPhone').value;
+
     let address = document.getElementById('customerAddress').value;
+
     let note = document.getElementById('customerNote').value;
 
     let whatsappNumber = '918979401469';
@@ -762,6 +768,7 @@ function placeOrder(event){
 /* HERO SLIDER */
 
 const slides = document.querySelectorAll('.hero-slide');
+
 const dots = document.querySelectorAll('.dot');
 
 let currentSlide = 0;
@@ -777,6 +784,7 @@ function showSlide(index){
     });
 
     slides[index].classList.add('active');
+
     dots[index].classList.add('active');
 
 }
