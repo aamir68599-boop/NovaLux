@@ -112,8 +112,8 @@ nav a:hover{
     object-position:center center;
     width:100%;
     height:100%;
-    padding:0;
-    transform:scale(0.95);
+    padding-top:70px;
+    transform:scale(0.88);
 }
 
 /* END FIX */
@@ -290,6 +290,99 @@ nav a:hover{
     transform:translateY(-4px) scale(1.03);
 }
 
+/* CHECKOUT */
+
+.checkout-page{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:#0b0f1a;
+    z-index:99999;
+    overflow-y:auto;
+    padding:120px 8% 60px;
+    display:none;
+}
+
+.checkout-page.active{
+    display:block;
+}
+
+.checkout-container{
+    max-width:700px;
+    margin:auto;
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:30px;
+    padding:40px;
+    backdrop-filter:blur(12px);
+}
+
+.checkout-container h2{
+    font-size:40px;
+    margin-bottom:15px;
+}
+
+.checkout-product{
+    color:#00e5ff;
+    margin-bottom:35px;
+    font-size:20px;
+}
+
+.checkout-form{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+.checkout-form input,
+.checkout-form textarea,
+.checkout-form select{
+    width:100%;
+    padding:16px;
+    border:none;
+    outline:none;
+    border-radius:14px;
+    background:rgba(255,255,255,0.08);
+    color:white;
+    font-size:15px;
+}
+
+.checkout-form textarea{
+    resize:none;
+    height:120px;
+}
+
+.checkout-form input::placeholder,
+.checkout-form textarea::placeholder{
+    color:#c7c7c7;
+}
+
+.place-order-btn{
+    border:none;
+    padding:16px;
+    border-radius:14px;
+    cursor:pointer;
+    font-size:16px;
+    font-weight:600;
+    background:linear-gradient(90deg,#00e5ff,#7b61ff);
+    color:white;
+    margin-top:10px;
+}
+
+.close-btn{
+    margin-top:18px;
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:14px;
+    background:rgba(255,255,255,0.08);
+    color:white;
+    cursor:pointer;
+    font-size:15px;
+}
+
 /* MOBILE */
 
 @media(max-width:768px){
@@ -298,7 +391,8 @@ nav{
     display:none;
 }
 
-.section-title h2{
+.section-title h2,
+.checkout-container h2{
     font-size:32px;
 }
 
@@ -329,8 +423,8 @@ nav{
     object-position:center center;
     width:100%;
     height:100%;
-    padding:15px;
-    transform:scale(0.90);
+    padding-top:80px;
+    transform:scale(0.82);
 }
 
 /* END */
@@ -342,6 +436,10 @@ nav{
 .product-info p{
     font-size:14px;
     line-height:1.7;
+}
+
+.checkout-container{
+    padding:25px;
 }
 
 }
@@ -431,11 +529,13 @@ nav{
 
                 <div class="button-group">
 
-                    <button class="cart-btn">
+                    <button class="cart-btn"
+                    onclick="openCheckout('Rustic Hen Egg Storage Cabinet','$150','Add To Cart')">
                         🛒 Add To Cart
                     </button>
 
-                    <button class="buy-btn">
+                    <button class="buy-btn"
+                    onclick="openCheckout('Rustic Hen Egg Storage Cabinet','$150','Buy Now')">
                         ⚡ Buy Now
                     </button>
 
@@ -463,11 +563,13 @@ nav{
 
                 <div class="button-group">
 
-                    <button class="cart-btn">
+                    <button class="cart-btn"
+                    onclick="openCheckout('Gothic Anatomical Heart Crochet Handbag','$300','Add To Cart')">
                         🛒 Add To Cart
                     </button>
 
-                    <button class="buy-btn">
+                    <button class="buy-btn"
+                    onclick="openCheckout('Gothic Anatomical Heart Crochet Handbag','$300','Buy Now')">
                         ⚡ Buy Now
                     </button>
 
@@ -495,11 +597,13 @@ nav{
 
                 <div class="button-group">
 
-                    <button class="cart-btn">
+                    <button class="cart-btn"
+                    onclick="openCheckout('Vintage Scroll Tea Ceremony Set','$180','Add To Cart')">
                         🛒 Add To Cart
                     </button>
 
-                    <button class="buy-btn">
+                    <button class="buy-btn"
+                    onclick="openCheckout('Vintage Scroll Tea Ceremony Set','$180','Buy Now')">
                         ⚡ Buy Now
                     </button>
 
@@ -527,11 +631,13 @@ nav{
 
                 <div class="button-group">
 
-                    <button class="cart-btn">
+                    <button class="cart-btn"
+                    onclick="openCheckout('Scarlet Muse Luxury Scent','$150','Add To Cart')">
                         🛒 Add To Cart
                     </button>
 
-                    <button class="buy-btn">
+                    <button class="buy-btn"
+                    onclick="openCheckout('Scarlet Muse Luxury Scent','$150','Buy Now')">
                         ⚡ Buy Now
                     </button>
 
@@ -545,7 +651,113 @@ nav{
 
 </section>
 
+<!-- CHECKOUT -->
+
+<div class="checkout-page" id="checkoutPage">
+
+    <div class="checkout-container">
+
+        <h2>Checkout</h2>
+
+        <div class="checkout-product" id="checkoutProduct">
+            Product Name
+        </div>
+
+        <form class="checkout-form" onsubmit="placeOrder(event)">
+
+            <input type="text" id="customerName" placeholder="Full Name" required>
+
+            <input type="tel" id="customerPhone" placeholder="Phone Number" required>
+
+            <input type="text" id="customerAddress" placeholder="Shipping Address" required>
+
+            <textarea id="customerNote" placeholder="Additional Notes"></textarea>
+
+            <button type="submit" class="place-order-btn">
+                Proceed To WhatsApp
+            </button>
+
+        </form>
+
+        <button class="close-btn" onclick="closeCheckout()">
+            Close
+        </button>
+
+    </div>
+
+</div>
+
 <script>
+
+/* CHECKOUT */
+
+let selectedProduct = '';
+let selectedPrice = '';
+let selectedAction = '';
+
+function openCheckout(product,price,action){
+
+    selectedProduct = product;
+    selectedPrice = price;
+    selectedAction = action;
+
+    document.getElementById('checkoutPage').classList.add('active');
+
+    document.getElementById('checkoutProduct').innerHTML =
+    `
+    ${product}<br><br>
+    Price: ${price}<br>
+    Action: ${action}
+    `;
+
+    document.body.style.overflow = 'hidden';
+
+}
+
+function closeCheckout(){
+
+    document.getElementById('checkoutPage').classList.remove('active');
+
+    document.body.style.overflow = 'auto';
+
+}
+
+/* WHATSAPP ORDER */
+
+function placeOrder(event){
+
+    event.preventDefault();
+
+    let name = document.getElementById('customerName').value;
+    let phone = document.getElementById('customerPhone').value;
+    let address = document.getElementById('customerAddress').value;
+    let note = document.getElementById('customerNote').value;
+
+    let whatsappNumber = '918979401469';
+
+    let message =
+`🛍️ New Order - NovaLux
+
+📦 Product: ${selectedProduct}
+
+💰 Price: ${selectedPrice}
+
+⚡ Action: ${selectedAction}
+
+👤 Name: ${name}
+
+📞 Phone: ${phone}
+
+🏠 Address: ${address}
+
+📝 Note: ${note}`;
+
+    let whatsappURL =
+`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+
+    window.open(whatsappURL,'_blank');
+
+}
 
 /* HERO SLIDER */
 
